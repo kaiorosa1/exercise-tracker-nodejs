@@ -1,10 +1,8 @@
 import { Request, Response, Router } from "express";
+import { userRoutes } from "./users.routes";
 
 const router = Router();
 
-router.use("/",(request: Request, response: Response)=> {
-    response.json({
-        message: "Hello from Exercise Tracker App"
-    });
-});
+router.use("/users",userRoutes);
+
 export { router };
