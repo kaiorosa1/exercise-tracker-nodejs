@@ -4,7 +4,15 @@ import { IUsersRepository } from "../IUsersRepository";
 
 class UsersRepositoryInMemory implements IUsersRepository {
     users: User[] = [];
-    constructor() { }
+
+    private static INSTANCE: UsersRepositoryInMemory;
+    
+    public static getInstance(): UsersRepositoryInMemory {
+        if(!UsersRepositoryInMemory.INSTANCE){
+            UsersRepositoryInMemory.INSTANCE = new UsersRepositoryInMemory();
+        }
+        return UsersRepositoryInMemory.INSTANCE;
+    }
 
     async create({ name, email, password }: ICreateUserDTO): Promise<User> {
         const user = new User();
@@ -17,7 +25,6 @@ class UsersRepositoryInMemory implements IUsersRepository {
     }
 
     async findByEmail(email: string): Promise<User> {
-        console.log("email in repo in mem")
         const user = this.users.find((user) => user.email === email);
         return user;
     }

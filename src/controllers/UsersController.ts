@@ -11,7 +11,6 @@ class UsersController {
     async create(request: Request, response: Response): Promise<Response> {
         const { name, email, password } = request.body;
         // creating a new user 
-
         const userAlreadyExists = await this.usersService.findByEmail(email);
         
         if (userAlreadyExists) {
@@ -28,7 +27,7 @@ class UsersController {
             password: passwordHashed
         });
 
-        return response.status(201).json({});
+        return response.status(201).json(user);
     }
 
     async authenticate(request: Request, response: Response): Promise<Response>{
