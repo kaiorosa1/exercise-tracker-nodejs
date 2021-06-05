@@ -11,6 +11,12 @@ class UsersController {
         // creating a new user 
         const usersService = new UsersService(); // should this be injected or instantiated?
 
+        const userAlreadyExists = await usersService.findByEmail(email);
+
+        if(userAlreadyExists) {
+            throw new Error("User already exits!");
+        }
+
         const user = await usersService.create({name, email, password});
 
         // call user service 
