@@ -1,10 +1,13 @@
 import { UsersRepositoryInMemory } from "../repositories/implementations/UsersRepositoryInMemory";
+import { UsersService } from "../services/UsersService";
 
-let usersRepositoryInMemory: UsersRepositoryInMemory
+let usersRepositoryInMemory: UsersRepositoryInMemory;
+let usersService: UsersService;
 
 describe("Create a new user", ()=> {
     beforeEach(()=>{
         usersRepositoryInMemory = new UsersRepositoryInMemory();
+        usersService = new UsersService(usersRepositoryInMemory);
     });
 
     it("should be able to create a new user", async ()=> {
@@ -14,7 +17,7 @@ describe("Create a new user", ()=> {
             password: "123"
         }
 
-        const result = await usersRepositoryInMemory.create(user);
+        const result = await usersService.create(user);
 
         expect(result).toHaveProperty("id");
     });

@@ -1,28 +1,29 @@
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 import { User } from "../entities/User";
-import { UsersRepositoryInMemory } from "../repositories/implementations/UsersRepositoryInMemory";
-
+import { IUsersRepository } from "../repositories/IUsersRepository";
 
 class UsersService {
 
+    constructor(private usersRepository: IUsersRepository) { }
+
     async create({ name, email, password }: ICreateUserDTO): Promise<User> {
         // access repo to create and save user
-        const usersRepository = new UsersRepositoryInMemory();
-
-        const user = await usersRepository.create({ name, email, password });
+        const user = await this.usersRepository.create({ name, email, password });
 
         return user;
     }
 
-    async findByEmail(email: string): Promise<User>{
-
-        const usersRepository = new UsersRepositoryInMemory();
-
-        const user = await usersRepository.findByEmail(email);
-
+    async findByEmail(email: string): Promise<User> {
+        const user = await this.usersRepository.findByEmail(email);
         return user;
     }
 
+    async findById(id: string): Promise<User> {
+
+        const user = await this.usersRepository.findById(id);
+
+        return user;
+    }
 
 
 }
