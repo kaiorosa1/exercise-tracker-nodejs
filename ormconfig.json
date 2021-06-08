@@ -4,7 +4,7 @@
     "host": "localhost",
     "username": "test",
     "password": "test",
-    "database": "exercisetracker", 
+    "database": "exercise_tracker", 
     "migrations": ["./src/database/migrations/*.ts"],
     "entities": ["./src/modules/**/entities/*.ts"],
     "cli": {
