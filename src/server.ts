@@ -1,4 +1,6 @@
-import createConnection from  "../src/database";
+import createConnection from  "./database";
+
+import "./container";
 
 import express from "express";
 import { router } from "./routes";

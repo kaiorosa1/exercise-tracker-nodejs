@@ -5,15 +5,6 @@ import { IUsersRepository } from "../IUsersRepository";
 class UsersRepositoryInMemory implements IUsersRepository {
     users: User[] = [];
 
-    private static INSTANCE: UsersRepositoryInMemory;
-    
-    public static getInstance(): UsersRepositoryInMemory {
-        if(!UsersRepositoryInMemory.INSTANCE){
-            UsersRepositoryInMemory.INSTANCE = new UsersRepositoryInMemory();
-        }
-        return UsersRepositoryInMemory.INSTANCE;
-    }
-
     async create({ name, email, password }: ICreateUserDTO): Promise<User> {
         const user = new User();
 
