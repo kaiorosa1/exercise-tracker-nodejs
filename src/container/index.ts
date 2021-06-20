@@ -6,4 +6,4 @@ import { IUsersRepository } from "../repositories/IUsersRepository";
 container.registerSingleton<IUsersRepository>(
     "UsersRepository",
     UsersRepository
-)
+);
