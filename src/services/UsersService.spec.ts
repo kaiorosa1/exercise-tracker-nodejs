@@ -4,13 +4,13 @@ import { UsersService } from "../services/UsersService";
 let usersRepositoryInMemory: UsersRepositoryInMemory;
 let usersService: UsersService;
 
-describe("Create a new user", ()=> {
-    beforeEach(()=>{
+describe("Create a new user", () => {
+    beforeEach(() => {
         usersRepositoryInMemory = new UsersRepositoryInMemory();
         usersService = new UsersService(usersRepositoryInMemory);
     });
 
-    it("should be able to create a new user", async ()=> {
+    it("should be able to create a new user", async () => {
         const user = {
             name: "John",
             email: "john@test.com",

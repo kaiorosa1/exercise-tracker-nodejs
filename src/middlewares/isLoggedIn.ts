@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
-import { UsersRepository } from "../repositories/implementations/UsersRepository";
+import { UsersRepository } from "../repositories/implementations/UsersRepository/UsersRepository";
 
 interface IPayload {
     sub: string;
 }
 
-export async function isLoggedIn(request: Request, response: Response, next: NextFunction){
+export async function isLoggedIn(request: Request, response: Response, next: NextFunction) {
     const authHeader = request.headers.authorization;
 
     if (!authHeader) {
