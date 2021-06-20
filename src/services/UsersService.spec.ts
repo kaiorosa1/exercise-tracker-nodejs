@@ -1,4 +1,4 @@
-import { UsersRepositoryInMemory } from "../repositories/implementations/UsersRepositoryInMemory";
+import { UsersRepositoryInMemory } from "../repositories/implementations/UsersRepository/UsersRepositoryInMemory";
 import { UsersService } from "../services/UsersService";
 
 let usersRepositoryInMemory: UsersRepositoryInMemory;
