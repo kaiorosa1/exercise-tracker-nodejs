@@ -22,3 +22,17 @@ describe("Create a new user", () => {
         expect(result).toHaveProperty("id");
     });
 });
+
+
+describe("Authenticate a user", () => {
+    beforeEach(() => {
+        usersRepositoryInMemory = new UsersRepositoryInMemory();
+        usersService = new UsersService(usersRepositoryInMemory);
+    });
+
+    it("should be able to auth a user", async () => {
+       // Authenticate a use test
+
+        expect(true);
+    });
+});
