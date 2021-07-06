@@ -12,12 +12,12 @@ class CategoriesController {
 
         const categoriesService = container.resolve(CategoriesService);
 
-        const user = await categoriesService.create({
+        const category = await categoriesService.create({
             name, 
             description
         });
 
-        return response.status(201).json(user);
+        return response.status(201).json(category);
     }
 
 }

@@ -1,17 +1,18 @@
 import { inject, injectable } from "tsyringe";
+import { ICreateExerciseDTO } from "../dtos/ICreateExerciseDTO";
 import { Exercise } from "../entities/Exercise";
-import { ICategoriesRepository } from "../repositories/ICategoriesRepository";
+import { IExercisesRepository } from "../repositories/IExercisesRepository";
 
 @injectable()
-class CategoriesService {
+class ExercisesService {
     constructor(
         @inject("ExercisesRepository")
         private exercisesRepository: IExercisesRepository
     ) { }
 
-    async create({  }: ICreateExerciseDTO): Promise<Exercise> {
+    async create({ duration, date, user_id, category_id }: ICreateExerciseDTO): Promise<Exercise> {
 
-        const exercise = await this.exercisesRepository.create({  });
+        const exercise = await this.exercisesRepository.create({ duration, date, user_id, category_id });
 
         return exercise;
 
@@ -19,4 +20,4 @@ class CategoriesService {
 
 }
 
-export { CategoriesService }
+export { ExercisesService }
